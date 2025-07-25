@@ -1,5 +1,10 @@
 ---
-title: primo
+title: Primo
+published: true
+tags:
+categories:
+kicker: "Starting a new adventure"
+created_at: 19/07/2025
 ---
 
 

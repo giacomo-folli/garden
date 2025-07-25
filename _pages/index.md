@@ -7,9 +7,10 @@ permalink: /
 
 # Welcome! 🌱
 
-<p style="padding: 3em 1em; background: #f5f7ff; border-radius: 4px;">
-  Take a look at <span style="font-weight: bold"> [[Your first note]] </span> to get started on your exploration.
-</p>
+<br />
+> Take a look at <span style="font-weight: bold"> [[Primo]] </span> to get started on your exploration.
+
+<br />
 
 <strong>Recently updated notes</strong>
 

@@ -1,14 +1,19 @@
 ---
 title: Why Self-Hosting and Open Source Matter More Than Ever
 image: https://miro.medium.com/v2/resize:fit:875/0*tsHdnjHPw-kdirpc
+published: true
+tags:
+categories:
+kicker: "Digital Privacy in 2025"
+created_at: 20/07/2025
 ---
 
+<img src="https://miro.medium.com/v2/resize:fit:875/0*tsHdnjHPw-kdirpc" alt="image">
+<div class="unsplash-mention">
+  Photo by <a href="https://unsplash.com/@writecodenow">Boitumelo</a> on Unsplash
+</div>
+
 In today’s Internet everything you do online can be tracked, stored and monetized.
-
-![](https://miro.medium.com/v2/resize:fit:875/0*tsHdnjHPw-kdirpc)
-
-> Photo by [Boitumelo](https://unsplash.com/@writecodenow?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com/)
-
 Free apps, smart devices, AI assistants —[^1] they all come with a hidden cost: _your data_. Even the platforms you trust most are constantly harvesting information under the guise of “personalization” or “improving user experience.”  
 The explosion of AI has only made things worse. Privacy policies are bloated legal shields, and regulation is still stuck in the 2010s.
 
@@ -53,7 +58,7 @@ It’s becoming _a movement_.
 
 ---
 
-References:
+_References:_
 
 [^1]: Not an AI article...
 [^2]: Still not an AI article
