@@ -1,12 +1,26 @@
-title:               My digital garden
-include:             ['_pages', '_tags']
-exclude:             ['_includes/notes_graph.json']
+title: My digital garden
+# tagline: My space to grow
+url: garden.giacomofolli.com
+author: Giacomo Folli
+include: ["_pages", "_tags"]
+exclude: ["_includes/notes_graph.json"]
 # You may need to change the base URL depending on your deploy configuration.
-baseurl:             ''
+baseurl: ""
+
+twitter:
+  username: packo_bit
+  card: summary
+
+logo: /assets/image.png
+
+social:
+  name: Giacomo Folli
+  links:
+    - https://github.com/giacomo-folli
 
 # If you are using a host that cannot resolve URLs that do
 # not end with .html (such as Neocities), set this to 'true'.
-use_html_extension:  false
+use_html_extension: false
 
 # Set to `true` to open non-internal links in new tabs, or
 # set to `false` to open non-internal links in current tab.
@@ -17,15 +31,16 @@ open_external_links_in_new_tab: true
 # as their browser will communicate with Twitter's servers.
 embed_tweets: false
 
-permalink:           pretty
+permalink: pretty
 relative_permalinks: false
 
 plugins:
   - jekyll-last-modified-at
+  - jekyll-seo-tag
 
 sass:
-  sass_dir:          _sass
-  style:            :compressed
+  sass_dir: _sass
+  style: :compressed
 
 collections:
   notes:
