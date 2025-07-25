@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+
+<body style="margin-inline: auto; max-width: 65rem;">
+  <nav>{% include nav.html %}</nav>
+  <main>
+
+    <div class="wrapper">
+      <content>
+        {{ content }}
+      </content>
+
+      <side>
+        <img src="/assets/illustr.webp" />
+
+        <div style="font-size: medium; margin-top: 1rem;">
+          <!-- Stuff -->
+
+
+          <div>- website: <a href="https://giacomofolli.com">giacomofolli.com</a></div>
+          <div>- based in italy 🇮🇹</div>
+          <div>- sports: hike, run, bike and climb</div>
+
+        </div>
+      </side>
+    </div>
+
+    <footer>{% include footer.html %}</footer>
+  </main>
+
+  {% include link-previews.html wrapperQuerySelector="content" %}
+</body>
+
+</html>
+
+
+<style>
+  .wrapper {
+    display: grid;
+    grid-gap: 2em;
+    grid-template-areas:
+      "content"
+      "side";
+
+    @media (min-width: 700px) {
+      grid-template-columns: 3fr 1fr;
+      grid-template-areas: "content side";
+    }
+  }
+</style>
