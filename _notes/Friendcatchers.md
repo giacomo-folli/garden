@@ -2,8 +2,6 @@
 title: Friendcatchers
 image: https://cdn-images-1.medium.com/max/400/0*pGaS6eMoNntmcTXL
 published: true
-tags:
-categories:
 kicker: "To bring on connections between people. To give and receive. That's the beauty of it."
 created_at: 25/07/2025
 ---

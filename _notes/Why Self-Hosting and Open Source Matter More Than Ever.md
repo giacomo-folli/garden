@@ -2,8 +2,6 @@
 title: Why Self-Hosting and Open Source Matter More Than Ever
 image: https://miro.medium.com/v2/resize:fit:875/0*tsHdnjHPw-kdirpc
 published: true
-tags:
-categories:
 kicker: "Digital Privacy in 2025"
 created_at: 20/07/2025
 ---

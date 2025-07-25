@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+<div style="margin: 0 auto; padding: 2rem;">
+  <h1 style="font-size: 1.75rem; font-weight: 600; margin-bottom: 1.5rem;">
+    Articles tagged with “{{ page.tag-name }}”
+  </h1>
+
+  <ul style="list-style: none; padding: 0; margin: 0;">
+    {% for note in site.notes %}
+    {% if note.tags contains page.tag-name %}
+    <li style="display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #e0e0e0;">
+      <div style="flex: 1;">
+        <a href="{{ note.url }}" style="font-size: 1.125rem; font-weight: 500; text-decoration: none; color: #333;">
+          {{ note.title }}
+        </a>
+        <div style="font-size: 0.875rem; color: #777; margin-top: 0.25rem;">
+          Published {{ note.created_at | date: "%Y-%m-%d" }} — Updated {{ note.last_modified_at_timestamp | date:
+          "%Y-%m-%d" }}
+        </div>
+      </div>
+      {% if note.image %}
+      <img src="{{ note.image }}" alt="{{ note.title }}" style="height: 64px; width: auto; border-radius: 6px;" />
+      {% endif %}
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</div>
