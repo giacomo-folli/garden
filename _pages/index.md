@@ -8,7 +8,7 @@ permalink: /
 # Hi, Paco here 🌱
 
 <br />
-> Take a look at <span style="font-weight: bold"> [[Primo]] </span> to get started on your exploration.
+> Take a look at <span style="font-weight: bold"> [[Why Self-Hosting and Open Source Matter More Than Ever|Digital Privacy in 2025]] </span> to get started on your exploration.
 
 <br />
 
