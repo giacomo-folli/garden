@@ -2,47 +2,386 @@
 <html lang="en">
 {% include head.html %}
 
-<body style="margin-inline: auto; max-width: 65rem;">
-  <nav>{% include nav.html %}</nav>
+<body>
+  <header>
+    <div class="logo">記録整理</div>
+    <nav>
+      <ul>
+        {% assign all_tags = "" | split: "" %}
+        {% for item in site.notes %}
+        {% for tag in item.tags %}
+        {% unless all_tags contains tag %}
+        {% assign all_tags = all_tags | push: tag %}
+        {% endunless %}
+        {% endfor %}
+        {% endfor %}
+
+        <ul>
+          {% for tag in all_tags %}
+          <li><a class="tag" href="/tags/{{ tag | slugify }}/">{{ tag }}</a></li>
+          {% endfor %}
+        </ul>
+
+      </ul>
+    </nav>
+  </header>
+
   <main>
+    <div class="content">
+      <div class="intro">
+        <p>Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul;
+          whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every
+          funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral
+          principle to prevent me from deliberately stepping into the street, and methodically knocking people's hats
+          off--then, I account it high time to get to sea as soon as I can. This is my substitute for pistol and ball.
+          With a philosophical flourish Cato throws himself upon his sword. I quietly take to the ship.</p>
+        <p>- Herman Melville, Moby-Dick; or, The Whale (1851)</p>
+      </div>
 
-    <div class="wrapper">
-      <content>
-        {{ content }}
-      </content>
+      <div class="posts">
+        {% for note in site.notes %}
+        <article class="post">
+          <div class="post-header">
+            <h2 class="post-title"><a href="{{ note.url }}">{{ note.title }}</a></h2>
+            <span class="post-date">{{ note.date | date: "%d %b '%y" }}</span>
+          </div>
 
-      <side>
-        <img src="/assets/illustr.webp" />
+          {% if note.image != null %}
+          <div class="post-image">
+            <img src="{{ note.image }}" width="100%" height="auto" />
+          </div>
+          {% endif%}
 
-        <div style="font-size: medium; margin-top: 1rem;">
-          <div>- website: <a href="https://giacomofolli.com" id="portfolio-page"
-              data-umami-event="Portforlio link clicked">giacomofolli.com</a></div>
-          <div>- based in italy 🇮🇹</div>
-          <div>- sports: hike, run, bike and climb</div>
-        </div>
-      </side>
+          <p class="post-excerpt">
+            {{ note.excerpt | remove: '<img>' | remove: '</img>' | strip_html }}
+          </p>
+        </article>
+        {% endfor %}
+      </div>
+
+      <div class="pagination">
+        <a href="#">1 of {{ paginator.total_pages }}</a>
+        {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path }}">Older →</a>
+        {% endif %}
+      </div>
     </div>
 
-    <footer>{% include footer.html %}</footer>
+    <!-- <div class="sidebar">
+      <div class="sidebar-section">
+        <h3 class="sidebar-title">Tags</h3>
+        <div class="tags">
+          {% for tag in site.tags %}
+          <span class="tag">{{ tag[0] }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </div> -->
   </main>
 
-  {% include link-previews.html wrapperQuerySelector="content" %}
+  <footer>
+    <div class="footer-left">
+      <p>© 2015-2025 記録整理</p>
+      <p><a href="#">Contact</a></p>
+      <p><a href="#">GitHub</a></p>
+      <p><a href="#">FAQ</a></p>
+      <p><a href="#">Support</a></p>
+      <p><a href="#">RSS</a></p>
+
+      <!-- <p><a href="#">4D3B 99AF 321B 982E 5662 89B1 0367 BF63 261F</a></p>
+      <p><a
+          href="#">z5yuzvq54q63w7452j7567645674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567......onion</a>
+      </p>
+      <p><a
+          href="#">ltrrxtq54q63w7452j7567645674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567456745674567......i4i7nq.b32.i2p</a>
+      </p>
+      <p><a href="#">Support this site</a></p>
+      <p><a href="#">BY-NC-SA 4.0</a></p> -->
+      <p><a href="#">Contact</a></p>
+      <p>If buying isn't owning, piracy isn't stealing.
+        <!-- <br>Birds aren't real. -->
+      </p>
+    </div>
+
+    <div class="footer-right">
+      <p>Share this page:</p>
+      <div class="qr-code">
+        <p>QR</p>
+      </div>
+      <!-- <div class="badges">
+        <div class="badge">BSD</div>
+        <div class="badge">R</div>
+        <div class="badge">N</div>
+        <div class="badge">Z</div>
+      </div> -->
+    </div>
+  </footer>
 </body>
 
-</html>
-
-
 <style>
-  .wrapper {
-    display: grid;
-    grid-gap: 2em;
-    grid-template-areas:
-      "content"
-      "side";
+  :root {
+    --accent-color: #4a4a4a;
+    --link-color: #ffffff;
+    --border-color: #333;
+    --post-bg: #0a0a0a;
+    --hover-color: #666;
+    --bg-color: #121313;
 
-    @media (min-width: 700px) {
-      grid-template-columns: 3fr 1fr;
-      grid-template-areas: "content side";
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 40px;
+  }
+
+  .logo {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 15px;
+  }
+
+  nav ul li a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+    text-transform: lowercase;
+  }
+
+  nav ul li a:hover {
+    color: var(--hover-color);
+    text-decoration: underline;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 40px;
+  }
+
+  .content {
+    border-right: 1px solid var(--border-color);
+    padding-right: 40px;
+  }
+
+  .intro {
+    margin-bottom: 40px;
+  }
+
+  .intro p {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  .intro p:last-child {
+    text-align: right;
+    font-style: italic;
+    margin-top: 20px;
+  }
+
+  .posts {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .post {
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .post-title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .post-title a {
+    color: var(--link-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-color);
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .post-title a:hover {
+    color: var(--hover-color);
+    border-color: var(--hover-color);
+  }
+
+  .post-date {
+    font-size: 14px;
+    color: var(--accent-color);
+  }
+
+  .post-image {
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+    overflow: hidden;
+    margin-bottom: 15px;
+    background-color: var(--post-bg);
+    filter: saturate(0);
+  }
+
+  .post-excerpt {
+    font-size: 0.8rem;
+    line-height: 1.8;
+  }
+
+  .sidebar {
+    padding-left: 40px;
+  }
+
+  .sidebar-section {
+    margin-bottom: 40px;
+  }
+
+  .sidebar-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .tag {
+    background-color: var(--post-bg);
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1px solid var(--border-color);
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    font-size: 14px;
+  }
+
+  .pagination a {
+    color: var(--link-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-color);
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .pagination a:hover {
+    color: var(--hover-color);
+    border-color: var(--hover-color);
+  }
+
+  footer {
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border-color);
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+  }
+
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 14px;
+  }
+
+  .footer-left a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-left a:hover {
+    color: var(--hover-color);
+  }
+
+  .footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .qr-code {
+    width: 120px;
+    height: 120px;
+    background-color: var(--post-bg);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .badges {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .badge {
+    width: 30px;
+    height: 30px;
+    background-color: var(--post-bg);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+  }
+
+  @media (max-width: 900px) {
+    main {
+      grid-template-columns: 1fr;
+    }
+
+    .content {
+      border-right: none;
+      padding-right: 0;
+    }
+
+    .sidebar {
+      padding-left: 0;
+      margin-top: 40px;
+    }
+
+    footer {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-right {
+      align-items: flex-start;
     }
   }
 </style>
+
+</html>
