@@ -15,7 +15,7 @@ In today’s Internet everything you do online can be tracked, stored and moneti
 Free apps, smart devices, AI assistants —[^1] they all come with a hidden cost: _your data_. Even the platforms you trust most are constantly harvesting information under the guise of “personalization” or “improving user experience.”  
 The explosion of AI has only made things worse. Privacy policies are bloated legal shields, and regulation is still stuck in the 2010s.
 
-_So yeah, in 2025, digital privacy is… tricky._ But lately there’s a simple and alternative way that’s becoming more and more popular.
+_So yeah, in 2025, digital privacy is… [[Nothing To Hide|tricky]]._ But lately there’s a simple and alternative way that’s becoming more and more popular.
 
 ## The Case for Open Source and Self-Hosting
 
